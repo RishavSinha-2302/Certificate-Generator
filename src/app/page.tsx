@@ -9,7 +9,7 @@ export default function WelcomePage() {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="w-full max-w-lg text-center shadow-2xl">
         <CardHeader className="items-center">
-          <Logo className="h-16 w-16" />
+          <Logo className="h-16" />
           <CardTitle className="text-4xl font-headline mt-4">Welcome to CertiFire</CardTitle>
           <CardDescription className="text-lg pt-2">
             Your one-stop solution for generating beautiful, data-driven certificates with ease.
