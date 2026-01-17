@@ -9,7 +9,6 @@ export default function Logo({ className }: { className?: string }) {
     <Image
       src={logoUrl}
       alt="CertiFire Logo"
-      width={128}
       height={128}
       className={cn('rounded-full', className)}
       data-ai-hint="logo"
