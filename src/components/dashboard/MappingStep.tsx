@@ -16,6 +16,18 @@ interface MappingStepProps {
   onNext: () => void;
 }
 
+const availableFonts = [
+  'PT Sans',
+  'Great Vibes',
+  'Merriweather',
+  'Montserrat',
+  'Playfair Display',
+  'Dancing Script',
+  'Oswald',
+  'Roboto',
+  'monospace',
+];
+
 export default function MappingStep({ onBack, onNext }: MappingStepProps) {
   const { csvData, selectedTemplate, mappings, setMappings } = useCertiFire();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -34,10 +46,6 @@ export default function MappingStep({ onBack, onNext }: MappingStepProps) {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-    ctx.font = `16px "PT Sans"`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
     
     mappings.forEach((mapping) => {
       ctx.strokeStyle = '#7E57C2';
@@ -48,6 +56,9 @@ export default function MappingStep({ onBack, onNext }: MappingStepProps) {
       ctx.fillRect(mapping.x, mapping.y, mapping.width, mapping.height);
       
       ctx.fillStyle = '#7E57C2';
+      ctx.font = `${16}px "${mapping.fontFamily}"`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
       ctx.fillText(mapping.csvColumn || 'Unassigned', mapping.x + mapping.width / 2, mapping.y + mapping.height / 2);
     });
 
@@ -116,6 +127,7 @@ export default function MappingStep({ onBack, onNext }: MappingStepProps) {
         height: currentRect.h,
         fontSize: 24,
         color: '#000000',
+        fontFamily: 'PT Sans',
       };
       setMappings([...mappings, newMapping]);
     }
@@ -198,14 +210,34 @@ export default function MappingStep({ onBack, onNext }: MappingStepProps) {
                   ))}
                 </SelectContent>
               </Select>
-               <div className="grid grid-cols-2 gap-2">
+               <div className="space-y-2">
                 <div className="space-y-1">
-                  <Label htmlFor={`fs-${mapping.id}`} className="text-xs">Font Size</Label>
-                  <Input id={`fs-${mapping.id}`} type="number" value={mapping.fontSize} onChange={e => updateMapping(mapping.id, {fontSize: parseInt(e.target.value, 10)})} />
+                  <Label htmlFor={`ff-${mapping.id}`} className="text-xs">Font Family</Label>
+                  <Select
+                    value={mapping.fontFamily}
+                    onValueChange={(value) => updateMapping(mapping.id, { fontFamily: value })}
+                  >
+                    <SelectTrigger id={`ff-${mapping.id}`}>
+                      <SelectValue placeholder="Select Font" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {availableFonts.map((font) => (
+                        <SelectItem key={font} value={font} style={{ fontFamily: font }}>
+                          {font}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
-                <div className="space-y-1">
-                  <Label htmlFor={`c-${mapping.id}`} className="text-xs">Color</Label>
-                  <Input id={`c-${mapping.id}`} type="color" value={mapping.color} onChange={e => updateMapping(mapping.id, {color: e.target.value})} />
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="space-y-1">
+                    <Label htmlFor={`fs-${mapping.id}`} className="text-xs">Font Size</Label>
+                    <Input id={`fs-${mapping.id}`} type="number" value={mapping.fontSize} onChange={e => updateMapping(mapping.id, {fontSize: parseInt(e.target.value, 10)})} />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor={`c-${mapping.id}`} className="text-xs">Color</Label>
+                    <Input id={`c-${mapping.id}`} type="color" value={mapping.color} onChange={e => updateMapping(mapping.id, {color: e.target.value})} />
+                  </div>
                 </div>
               </div>
             </div>

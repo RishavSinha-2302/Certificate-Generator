@@ -83,16 +83,16 @@ export default function GenerateStep({ onBack }: GenerateStepProps) {
       title: 'Dispatching Emails',
       description: 'Simulating email dispatch process...',
     });
-    console.log('--- EMAIL DISPATCH ---');
+    console.log('--- EMAIL DISPATCH SIMULATION ---');
     csvData?.rows.forEach((row, index) => {
       console.log(`Sending certificate to ${row.email || 'N/A'} for ${row.name || 'N/A'}`);
     });
-    console.log('--- DISPATCH COMPLETE ---');
+    console.log('--- SIMULATION COMPLETE ---');
 
     setTimeout(() => {
       setIsSending(false);
       toast({
-        title: 'Emails Sent',
+        title: 'Emails "Sent"',
         description: 'Check the browser console for dispatch logs.',
       });
     }, 2000);
@@ -132,7 +132,7 @@ export default function GenerateStep({ onBack }: GenerateStepProps) {
             </Button>
             <Button onClick={handleEmail} disabled={isZipping || isSending} size="lg" variant="secondary">
               {isSending ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="mr-2 h-4 w-4" />}
-              {isSending ? 'Sending...' : 'Dispatch Emails'}
+              {isSending ? 'Sending...' : 'Dispatch Emails (Simulate)'}
             </Button>
           </div>
 

@@ -33,7 +33,7 @@ export default function CertificatePreview({ rowIndex }: CertificatePreviewProps
         const text = dataRow[mapping.csvColumn] || '';
         if (text) {
           ctx.fillStyle = mapping.color;
-          ctx.font = `${mapping.fontSize}px "PT Sans"`;
+          ctx.font = `${mapping.fontSize}px "${mapping.fontFamily}"`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           

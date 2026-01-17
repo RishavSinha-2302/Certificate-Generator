@@ -12,6 +12,7 @@ export type Mapping = {
   height: number;
   fontSize: number;
   color: string;
+  fontFamily: string;
 };
 
 export type Template = {
