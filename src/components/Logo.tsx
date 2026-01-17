@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 
 export default function Logo({ className }: { className?: string }) {
   // To change the logo, simply replace the URL in the line below.
-  const logoUrl = 'https://picsum.photos/seed/certifire-logo/128/128';
+  const logoUrl = '/icon.png';
 
   return (
     <Image
