@@ -61,7 +61,7 @@ This project aims to **automate and standardize certificate generation** while k
   Instantly preview certificate changes before exporting.
 
 - 🎨 **Fully Customizable Layout**  
-  Control text placement, font size, styles, and alignment.
+  Adjust how text appears—its position, size, style, and alignment.
 
 - 🧱 **Modern Frontend Stack**  
   Built with performance and scalability in mind.
