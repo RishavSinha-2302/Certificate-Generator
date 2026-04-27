@@ -38,7 +38,7 @@ The project focuses on **clean architecture, maintainability, and real‑world u
 
 ---
 
-## 🎯 Motivation
+## 🎯 Motivations
 
 Manual certificate creation is:
 - Time‑consuming
