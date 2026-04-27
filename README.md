@@ -8,7 +8,7 @@ This project is designed to generate **professional certificates in bulk** for e
 
 ---
 
-## 📌 Table of Content
+## 📌 Table of Contents
 
 - [Overview](#overview)
 - [Motivation](#motivation)
